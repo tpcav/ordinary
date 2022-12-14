@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from '../app/dashboard/Navbar'
 import Link from "next/link";
+import React from "react";
 
 const words = ["ache",
 "acid",
@@ -1016,6 +1017,8 @@ function Game() {
   const [highStreak, setHighStreak] = useState(0);
   const [highScore, setHighScore] = useState(0);
 
+  const guessRef = React.useRef(null);
+
   useEffect(() => {
     // Start the timer when a new word is displayed
     let timerInterval = setInterval(() => {
@@ -1046,47 +1049,55 @@ function Game() {
       setNextWord(words[nextWordIndex]);
     }, [gameOver]);
 
-  function handleGuess(guess) {
-    if (guess === nextWord) {
-      setStreak(streak + 1);
-      setCurrentResult(``);
-      const randomIndex = Math.floor(Math.random() * words.length);
-      setRandWord(words[randomIndex]);
-  
-      // Get the index of the next word in the list
-      const nextWordIndex = (randomIndex + 1) % words.length;
-      
-      // Get the next word in the list
-      setNextWord(words[nextWordIndex]);
+  function handleGuess(guess: String) {
+      if (guess.length == 4) {
+      if (guess === nextWord) {
+        setGuess('');
+        setStreak(streak + 1);
+        setCurrentResult(``);
+        const randomIndex = Math.floor(Math.random() * words.length);
+        setRandWord(words[randomIndex]);
+    
+        // Get the index of the next word in the list
+        const nextWordIndex = (randomIndex + 1) % words.length;
+        
+        // Get the next word in the list
+        setNextWord(words[nextWordIndex]);
 
-      while (gameOver == false) {
-        if (nextWord[0] !== randWord[0]) {
-          // score += 4;
-          setScore(score + 4);
-          break;
+        while (gameOver == false) {
+          if (nextWord[0] !== randWord[0]) {
+            // score += 4;
+            setScore(score + 4);
+            break;
+          }
+
+          if (nextWord[1] !== randWord[1]) {
+            // wordScore += 3;
+            setScore(score + 3);
+            break;
+          }
+
+          if (nextWord[2] !== randWord[2]) {
+            // wordScore += 2;
+            setScore(score + 2);
+            break;
+          }
+
+          if (nextWord[3] !== randWord[3]) {
+            // wordScore += 1;
+            setScore(score + 1);
+            break;
+          }
         }
 
-        if (nextWord[1] !== randWord[1]) {
-          // wordScore += 3;
-          setScore(score + 3);
-          break;
-        }
-
-        if (nextWord[2] !== randWord[2]) {
-          // wordScore += 2;
-          setScore(score + 2);
-          break;
-        }
-
-        if (nextWord[3] !== randWord[3]) {
-          // wordScore += 1;
-          setScore(score + 1);
-          break;
-        }
+        setTimer(60);
+      } else {
+        setGuess('');
+        setCurrentResult(``);
       }
-
-      setTimer(60);
     } else {
+      alert("Word must be 4 letters long");
+      setGuess('');
       setCurrentResult(``);
     }
   }
@@ -1110,6 +1121,7 @@ function Game() {
 
 
   function handleSubmit(e) {
+    console.log("submit");
     e.preventDefault();
     handleGuess(guess);
   }
@@ -1122,6 +1134,14 @@ function Game() {
     setFinalResult("");
     setTimer(60);
   }
+
+  const checkForEnter = (e) => {
+    if (e.key === "Enter" && e.shiftKey == false) {
+      console.log("enter");
+      return handleSubmit(e);
+    }
+  }
+
   return (
 
     <div className="overflow-hidden h-screen">
@@ -1136,18 +1156,20 @@ function Game() {
                 <p className="mx-5 text-5xl">{t}</p>
                 <p className="mx-5 text-5xl">{score}</p>
               </div>
-              <p className="bg-gray-800 p-5 rounded-lg text-2xl w-48 text-center">{randWord}</p>
+              <p className="bg-gray-800 p-5 rounded-lg text-2xl w-48 text-center mt-4">{randWord}</p>
             </div>
             <div className="flex mt-6">
               <form className="flex flex-col justify-center items-center" onSubmit={handleSubmit}>
-              <input
-                className="text-black w-48 bg-white p-2"
-                type="text"
-                value={guess}
-                onChange={(e) => setGuess(e.target.value.toLowerCase())}
-              />
-              <button className="bg-gray-600 p-2 px-6 my-6 rounded-full flex items-center justify-center" type="submit">Guess</button>
-            </form>
+                <input
+                  className="text-black w-48 bg-white p-2"
+                  type="text"
+                  value={guess}
+                  onChange={(e) => setGuess(e.target.value.toLowerCase())}
+                  onKeyDown={checkForEnter}
+                  ref={guessRef}
+                />
+                <button className="bg-gray-600 p-2 px-6 my-6 rounded-full flex items-center justify-center" type="submit">Guess</button>
+              </form>
             </div>
             <p>{currentResult}</p>
             <p className="font-black">Personal Best</p>
