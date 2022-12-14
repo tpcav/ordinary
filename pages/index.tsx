@@ -2,8 +2,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from "react";
 
-import Navbar from '../app/dashboard/Navbar'
-
 export default function Example() {
 
   const [highStreak, setHighStreak] = useState(0);
