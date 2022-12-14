@@ -1131,7 +1131,7 @@ function Game() {
     setTimer(60);
   }
 
-  const checkForEnter = (e) => {
+  const checkForEnter = (e: any) => {
     if (e.key === "Enter" && e.shiftKey == false) {
       console.log("enter");
       return handleSubmit(e);
