@@ -1117,7 +1117,7 @@ function Game() {
     localStorage.setItem("highScore", JSON.stringify(score));
   }
 
-  function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: any) {
     e.preventDefault();
     handleGuess(guess);
   }
