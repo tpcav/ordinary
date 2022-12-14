@@ -5,7 +5,7 @@
 A word guessing game that test your knowledge of the alphabet & vocabulary.
 
 
-## Downloads
+## Installation
 
 Created using Next.js v13.0.6 <br>
 ```
