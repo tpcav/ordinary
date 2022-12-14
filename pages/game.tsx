@@ -1113,8 +1113,8 @@ function Game() {
   if (streak > highStreak || score > highScore) {
     setHighStreak(streak);
     setHighScore(score);
-    localStorage.setItem("highStreak", streak);
-    localStorage.setItem("highScore", score);
+    localStorage.setItem("highStreak", toString(streak));
+    localStorage.setItem("highScore", toString(score));
   }
 
 
