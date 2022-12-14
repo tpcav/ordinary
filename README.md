@@ -3,3 +3,52 @@
 ### Word Guessing Game
 
 A word guessing game that test your knowledge of the alphabet & vocabulary.
+
+
+## Downloads
+
+Created using Next.js v13.0.6 <br>
+```
+npx create-next-app@latest
+```
+
+Styled using Tailwind
+- cd into project directory before installing
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+Styled using Tailwind
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+Update `tailwind.config.js` file
+```
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Add to `./styles/globals.css` file
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Others
+```
+npm i @headlessui/react
+npm i heroicons
+```
