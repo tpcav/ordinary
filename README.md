@@ -1,4 +1,4 @@
-# Ordinary
+# ordinary-word-game
 
 ### Word Guessing Game
 
