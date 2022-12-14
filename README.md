@@ -19,12 +19,6 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-Styled using Tailwind
-```
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-
 Update `tailwind.config.js` file
 ```
 /** @type {import('tailwindcss').Config} */
