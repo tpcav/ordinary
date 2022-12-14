@@ -2,6 +2,8 @@
 
 A word guessing game that test your knowledge of the alphabet & vocabulary.
 
+### Try the [demo](https://ordinary-word-game.vercel.app/)
+
 ## Installation
 
 Created using Next.js v13.0.6 <br>
