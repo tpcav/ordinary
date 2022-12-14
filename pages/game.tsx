@@ -1051,55 +1051,55 @@ function Game() {
 
   function handleGuess(guess: String) {
       if (guess.length == 4) {
-      if (guess === nextWord) {
-        setGuess('');
-        setStreak(streak + 1);
-        setCurrentResult(``);
-        const randomIndex = Math.floor(Math.random() * words.length);
-        setRandWord(words[randomIndex]);
-    
-        // Get the index of the next word in the list
-        const nextWordIndex = (randomIndex + 1) % words.length;
-        
-        // Get the next word in the list
-        setNextWord(words[nextWordIndex]);
+        if (guess === nextWord) {
+          setGuess('');
+          setStreak(streak + 1);
+          setCurrentResult(``);
+          const randomIndex = Math.floor(Math.random() * words.length);
+          setRandWord(words[randomIndex]);
+      
+          // Get the index of the next word in the list
+          const nextWordIndex = (randomIndex + 1) % words.length;
+          
+          // Get the next word in the list
+          setNextWord(words[nextWordIndex]);
 
-        while (gameOver == false) {
-          if (nextWord[0] !== randWord[0]) {
-            // score += 4;
-            setScore(score + 4);
-            break;
+          while (gameOver == false) {
+            if (nextWord[0] !== randWord[0]) {
+              // score += 4;
+              setScore(score + 4);
+              break;
+            }
+
+            if (nextWord[1] !== randWord[1]) {
+              // wordScore += 3;
+              setScore(score + 3);
+              break;
+            }
+
+            if (nextWord[2] !== randWord[2]) {
+              // wordScore += 2;
+              setScore(score + 2);
+              break;
+            }
+
+            if (nextWord[3] !== randWord[3]) {
+              // wordScore += 1;
+              setScore(score + 1);
+              break;
+            }
           }
 
-          if (nextWord[1] !== randWord[1]) {
-            // wordScore += 3;
-            setScore(score + 3);
-            break;
-          }
-
-          if (nextWord[2] !== randWord[2]) {
-            // wordScore += 2;
-            setScore(score + 2);
-            break;
-          }
-
-          if (nextWord[3] !== randWord[3]) {
-            // wordScore += 1;
-            setScore(score + 1);
-            break;
-          }
+          setTimer(60);
+        } else {
+          setGuess('');
+          setCurrentResult(``);
         }
-
-        setTimer(60);
       } else {
+        alert("Word must be 4 letters long");
         setGuess('');
         setCurrentResult(``);
       }
-    } else {
-      alert("Word must be 4 letters long");
-      setGuess('');
-      setCurrentResult(``);
-    }
   }
 
   useEffect(() => {
@@ -1121,7 +1121,6 @@ function Game() {
 
 
   function handleSubmit(e) {
-    console.log("submit");
     e.preventDefault();
     handleGuess(guess);
   }
@@ -1141,6 +1140,12 @@ function Game() {
       return handleSubmit(e);
     }
   }
+
+  useEffect(() => {
+    if (guess !== "" && guess === nextWord) {
+      handleGuess(guess);
+    }
+  }, [guess]);
 
   return (
 
