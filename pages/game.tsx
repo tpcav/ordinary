@@ -1149,7 +1149,6 @@ function Game() {
   return (
 
     <div className="overflow-hidden h-screen">
-      <Navbar/>
 
       <div className="overflow-hidden grid py-20 m-10 place-items-center overflow-y-hidden">
         {!gameOver ? (

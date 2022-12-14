@@ -23,8 +23,6 @@ export default function Example() {
         <meta name="description" content="Word guessing game testing your ABCs."></meta>
       </Head>
 
-      <Navbar/>
-
       <main className='overflow-hidden flex flex-col items-center justify-center h-screen overflow-y-hidden pb-64'>
         <div className='overflow-hidden flex flex-col justify-center items-center overflow-y-hidden'>
 
