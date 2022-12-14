@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from "react";
 
+import Navbar from "../app/dashboard/Navbar";
+
 export default function Example() {
 
   const [highStreak, setHighStreak] = useState(0);
@@ -22,6 +24,8 @@ export default function Example() {
         <title>Home | Ordinary</title>
         <meta name="description" content="Word guessing game testing your ABCs."></meta>
       </Head>
+
+      <Navbar/>
 
       <main className='overflow-hidden flex flex-col items-center justify-center h-screen overflow-y-hidden pb-64'>
         <div className='overflow-hidden flex flex-col justify-center items-center overflow-y-hidden'>

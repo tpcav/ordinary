@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
 
+import Navbar from "../app/dashboard/Navbar";
+
 const words = ["ache",
 "acid",
 "acre",
@@ -1147,6 +1149,8 @@ function Game() {
   return (
 
     <div className="overflow-hidden h-screen">
+
+      <Navbar/>
 
       <div className="overflow-hidden grid py-20 m-10 place-items-center overflow-y-hidden">
         {!gameOver ? (
