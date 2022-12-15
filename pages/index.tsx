@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { useState, useEffect } from "react";
 
 import Navbar from "../app/dashboard/Navbar";
+import Modal from '../app/dashboard/modal';
 
 export default function Example() {
 
   const [highStreak, setHighStreak] = useState(0);
   const [highScore, setHighScore] = useState(0);
+
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   useEffect(() => {
     const savedHighStreak = localStorage.getItem("highStreak");
@@ -26,6 +29,9 @@ export default function Example() {
       </Head>
 
       <Navbar/>
+      <div>
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </div>
 
       <main className='overflow-hidden flex flex-col items-center justify-center h-screen overflow-y-hidden pb-64'>
         <div className='overflow-hidden flex flex-col justify-center items-center overflow-y-hidden'>
