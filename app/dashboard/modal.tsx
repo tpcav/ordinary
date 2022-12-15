@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ isOpen, onClose }) => {
+const Modal = ({ isOpen: , onClose: any }) => {
   return (
     <div className={`fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-75 z-50 ${isOpen ? 'block' : 'hidden'}`}>
       <div className="absolute w-96 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-white rounded-lg shadow-xl">

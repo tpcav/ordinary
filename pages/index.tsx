@@ -5,17 +5,6 @@ import { useState, useEffect } from "react";
 import Navbar from "../app/dashboard/Navbar";
 import Modal from '../app/dashboard/modal';
 
-import Script from "next/script"
-<Script src="https://www.googletagmanager.com/gtag/js?id=G-C7F4B824RJ" strategy="afterInteractive" />
-
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-C7F4B824RJ');
-</script>
-
 export default function Example() {
 
   const [highStreak, setHighStreak] = useState(0);
@@ -37,7 +26,16 @@ export default function Example() {
       <Head>
         <title>Home | Ordinary</title>
         <meta name="description" content="Word guessing game testing your ABCs."></meta>
-      </Head> 
+      </Head>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7F4B824RJ"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-C7F4B824RJ');
+      </script>
 
       <Navbar/>
       <div>
