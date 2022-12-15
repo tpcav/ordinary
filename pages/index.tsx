@@ -28,15 +28,6 @@ export default function Example() {
         <meta name="description" content="Word guessing game testing your ABCs."></meta>
       </Head>
 
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7F4B824RJ"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-C7F4B824RJ');
-      </script>
-
       <Navbar/>
       <div>
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
