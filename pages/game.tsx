@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
 
+import Navbar from "../app/dashboard/Navbar";
 import Menu from "../app/dashboard/Menu";
 import Footer from "../app/dashboard/Footer";
 
@@ -1018,6 +1019,8 @@ function Game() {
   const [score, setScore] = useState(0);
   const [highStreak, setHighStreak] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [username, setUsername] = useState("");
+  const [showUpload, setShowUpload] = useState(false);
 
   const guessRef = React.useRef(null);
 
@@ -1104,12 +1107,33 @@ function Game() {
       }
   }
 
+  let guid = () => {
+    let s4 = () => {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  }
+
   useEffect(() => {
     const savedHighStreak = localStorage.getItem("highStreak");
     const savedHighScore = localStorage.getItem("highScore");
+    const savedUsername = localStorage.getItem("username");
+    const savedLeaderboardID = localStorage.getItem("leaderboardID");
+
     if (savedHighStreak && savedHighScore) {
       setHighStreak(parseInt(savedHighStreak));
       setHighScore(parseInt(savedHighScore));
+    }
+
+    if (savedUsername) {
+      setUsername(savedUsername);
+    }
+
+    if (!savedLeaderboardID) {
+      localStorage.setItem("leaderboardID", guid());
     }
   }, []);
 
@@ -1118,6 +1142,7 @@ function Game() {
     setHighScore(score);
     localStorage.setItem("highStreak", JSON.stringify(streak));
     localStorage.setItem("highScore", JSON.stringify(score));
+    setShowUpload(true);
   }
 
   function handleSubmit(e: any) {
@@ -1132,6 +1157,28 @@ function Game() {
     setCurrentResult("");
     setFinalResult("");
     setTimer(60);
+  }
+
+  function handleUploadToLeaderboard() {
+    localStorage.setItem("username", username);
+
+    let data: Leaderboard = {
+      date: new Date().toUTCString(),
+      userName: username,
+      streak: highStreak,
+      score: highScore
+    };
+
+    let leaderboardID = localStorage.getItem("leaderboardID");
+
+    if (!leaderboardID) {
+      leaderboardID = guid();
+      localStorage.setItem("leaderboardID", leaderboardID);
+    }
+
+    LeaderboardDataService.update(leaderboardID, data);
+    setShowUpload(false);
+    alert("Uploaded!");
   }
 
   const checkForEnter = (e: any) => {
@@ -1192,6 +1239,18 @@ function Game() {
                 <Link href="/">Home</Link>
               </button>
             </div>
+
+            {showUpload && <div className="flex flex-col justify-center items-center overflow-y-hidden mt-20">
+              <p>You got a personal high score! Do you wish to upload it?</p>
+              <input
+                  className="text-black w-48 bg-white p-2 mt-5"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value.toLowerCase())}
+                  placeholder="Username"
+                />
+              <button className="bg-gray-600 p-2 px-5 my-4 rounded-full mt-5" onClick={handleUploadToLeaderboard}>Upload</button>
+            </div>}
           </>
 
         )}

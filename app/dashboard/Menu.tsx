@@ -3,6 +3,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const solutions = [
+  {name:'Home', description: '', href: '/'},
   { name: 'Play', description: 'Learn about tips, product updates and company culture.', href: '#' },
   {
     name: 'Tutorial',
@@ -53,7 +54,6 @@ export default function Menu() {
                       className="-m-3 block rounded-md p-3 transition duration-150 ease-in-out hover:bg-gray-50"
                     >
                       <p className="text-base font-medium text-gray-900">{item.name}</p>
-                      <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                     </a>
                   ))}
                 </div>

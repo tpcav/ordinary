@@ -1,3 +1,10 @@
+import Head from 'next/head'
+import Link from 'next/link'
+import { useState, useEffect } from "react";
+
+import LeaderboardDataService from "../services/leaderboard.service";
+import LeaderboardType from "../types/leaderboard.type";
+
 const people = [
   { rank: '1', name: 'tcav', title: '8', email: '10'},
   { rank: '2', name: 'sissy', title: '8', email: '10'},
@@ -13,8 +20,32 @@ const people = [
 ]
 
 export default function Leaderboard() {
+
+  const [leaderboard, setLeaderboard] = useState([]);
+
+  useEffect(() => {
+      LeaderboardDataService.getTopTenStreaks().then((snapshot) => {
+          let tmpTopTenStreaks: any = [];
+
+          snapshot.forEach(childSnapshot => {
+              if (childSnapshot.exists()) {
+                  tmpTopTenStreaks.push(childSnapshot.val());
+              }
+          });
+
+          setLeaderboard(tmpTopTenStreaks);
+      }).catch((error) => {
+          console.error(error);
+      });
+  }, []);
+
   return (
     <div className="p-10 m-4 sm:px-6 lg:px-8 bg-white rounded-lg mb-10">
+      <ol className="list-none">
+        {
+          leaderboard.map((item: LeaderboardType, index: number) => <li key={item.key?.toString()} className='pt-2 text-lg text-center'>{(index + 1) + ". " + item.userName + " - " + item.streak + " | " + item.score}</li>)
+        }
+      </ol>
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Global Leaderboard</h1>
