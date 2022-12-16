@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 
 import Navbar from "../app/dashboard/Navbar";
-import Menu from "../app/dashboard/Menu";
-import Footer from "../app/dashboard/Footer";
+import Leaderboard from "../types/leaderboard.type";
+import LeaderboardDataService from "../services/leaderboard.service";
 
 const words = ["ache",
 "acid",
@@ -1196,11 +1196,11 @@ function Game() {
 
   return (
 
-    <div className="h-screen">
+    <div className="overflow-hidden h-screen">
 
-      <Menu/>
+      <Navbar/>
 
-      <div className="grid py-20 m-10 place-items-center overflow-y-hidden bg-gray-100 rounded-lg">
+      <div className="overflow-hidden grid py-20 m-10 place-items-center overflow-y-hidden">
         {!gameOver ? (
           <>
             <div className="flex flex-col justify-center items-center overflow-y-hidden">
@@ -1209,9 +1209,9 @@ function Game() {
                 <p className="mx-5 text-5xl">{t}</p>
                 <p className="mx-5 text-5xl">{score}</p>
               </div>
-              <p className="bg-gray-200 p-4 rounded-lg text-2xl w-48 text-center mt-4">{randWord}</p>
+              <p className="bg-gray-800 p-5 rounded-lg text-2xl w-48 text-center mt-4">{randWord}</p>
             </div>
-            <div className="flex mt-2">
+            <div className="flex mt-6">
               <form className="flex flex-col justify-center items-center" onSubmit={handleSubmit}>
                 <input
                   className="text-black w-48 bg-white p-2"
@@ -1221,7 +1221,7 @@ function Game() {
                   onKeyDown={checkForEnter}
                   ref={guessRef}
                 />
-                <button className="bg-black text-white p-2 px-6 my-10 mb-8 rounded-full flex items-center justify-center" type="submit">Guess</button>
+                <button className="bg-gray-600 p-2 px-6 my-6 rounded-full flex items-center justify-center" type="submit">Guess</button>
               </form>
             </div>
             <p>{currentResult}</p>
@@ -1234,8 +1234,8 @@ function Game() {
             <div className="flex flex-col justify-center items-center overflow-y-hidden mt-20">
               <p>{currentResult}</p>
               <p className="">{finalResult}</p>
-              <button className="bg-black text-white p-2 px-5 my-4 rounded-full" onClick={handlePlayAgain}>Play Again</button>
-              <button className="bg-black text-white p-2 px-5 rounded-full">
+              <button className="bg-gray-600 p-2 px-5 my-4 rounded-full" onClick={handlePlayAgain}>Play Again</button>
+              <button className="bg-gray-600 p-2 px-5 rounded-full">
                 <Link href="/">Home</Link>
               </button>
             </div>
@@ -1255,8 +1255,10 @@ function Game() {
 
         )}
       </div>
-
-      <Footer/>
+      <footer className="w-full h-16
+            fixed left-0 bottom-0
+            flex justify-center items-center
+            text-white">
     </div>
     
 
