@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from "react";
-import Leaderboard from '../app/dashboard/Leaderboard';
+import Leaderboard from '../app/dashboard/Leader';
 
 import Menu from '../app/dashboard/Menu';
 import PersonalBest from '../app/dashboard/PersonalBest';
