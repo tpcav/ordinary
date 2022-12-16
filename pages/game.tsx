@@ -1259,6 +1259,7 @@ function Game() {
             fixed left-0 bottom-0
             flex justify-center items-center
             text-white">
+        </footer>
     </div>
     
 
