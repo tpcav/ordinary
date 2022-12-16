@@ -20,6 +20,8 @@ export default function Leaderboard() {
                 }
             });
 
+            tmpTopTenStreaks.reverse();
+
             setLeaderboard(tmpTopTenStreaks);
         }).catch((error) => {
             console.error(error);

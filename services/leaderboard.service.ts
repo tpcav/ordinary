@@ -1,12 +1,12 @@
 import firebase from "../utils/firebase";
 import Leaderboard from "../types/leaderboard.type";
-import { ref, set, remove, get, child, query, orderByChild, limitToFirst } from 'firebase/database';
+import { ref, set, remove, get, child, query, orderByChild, limitToLast } from 'firebase/database';
 
 class LeaderboardDataService {
      async getTopTenStreaks() {
         const db = ref(firebase, "/leaderboard");
         const topStreaks = query(db, orderByChild('streak'));
-        const topTenStreaks = query(topStreaks, limitToFirst(10));
+        const topTenStreaks = query(topStreaks, limitToLast(10));
 
         return await get(topTenStreaks);
     }
