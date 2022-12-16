@@ -6,44 +6,19 @@ import Navbar from "../app/dashboard/Navbar";
 import Modal from '../app/dashboard/modal';
 
 export default function Example() {
-
-  const [highStreak, setHighStreak] = useState(0);
-  const [highScore, setHighScore] = useState(0);
-
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
-  useEffect(() => {
-    const savedHighStreak = localStorage.getItem("highStreak");
-    const savedHighScore = localStorage.getItem("highScore");
-    if (savedHighStreak && savedHighScore) {
-      setHighStreak(parseInt(savedHighStreak));
-      setHighScore(parseInt(savedHighScore));
-    }
-  }, []);
   
   return (
     <div className="overflow-hidden h-screen">
       <Head>
-        <title>Home | Ordinary</title>
-        <meta name="description" content="Word guessing game testing your ABCs."></meta>
+        <title>Ordinary. Word Guessing Game.</title>
+        <meta name="description" content="Word guessing game that test your knowledge of the alphabet."></meta>
+      
       </Head>
 
       <Navbar/>
-      <div>
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      </div>
 
       <main className='overflow-hidden flex flex-col items-center justify-center h-screen overflow-y-hidden pb-64'>
         <div className='overflow-hidden flex flex-col justify-center items-center overflow-y-hidden'>
-
-          <div className='bg-gray-800 p-4 m-4 rounded-lg'>
-            <p className='font-bold text-2xl text-center'>Personal Best</p>
-            <div className='p-2'>
-              <p className='pt-2 text-lg text-center'>Streak: {highStreak}</p>
-              <p className='text-lg text-center'>Score: {highScore} </p>
-            </div>
-        
-          </div>
 
         </div>
         <button className='bg-gray-600 mt-2 p-2 px-6 rounded-full'>
