@@ -1,25 +1,32 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import LeaderboardDataService from "../../services/leaderboard.service";
+import LeaderboardType from "../../types/leaderboard.type";
 import { useState, useEffect } from "react";
 
-const people = [
-  { rank: '1', name: 'tcav', title: '8', email: '10'},
-  { rank: '2', name: 'sissy', title: '8', email: '10'},
-  { rank: '3', name: 'Andrew', title: '8', email: '10'},
-  { rank: '4', name: 'magikTrickz', title: '8', email: '10'},
-  { rank: '5', name: 'tcav', title: '8', email: '10'},
-  { rank: '6', name: 'tcav', title: '8', email: '10'},
-  { rank: '7', name: 'tcav', title: '8', email: '10'},
-  { rank: '8', name: 'tcav', title: '8', email: '10'},
-  { rank: '9', name: 'tcav', title: '8', email: '10'},
-  { rank: '10', name: 'tcav', title: '8', email: '10'},
-  // More people...
-]
-
 export default function Leaderboard() {
+  const [leaderboard, setLeaderboard] = useState([]);
+
+    useEffect(() => {
+        LeaderboardDataService.getTopTenStreaks().then((snapshot) => {
+            let tmpTopTenStreaks: any = [];
+
+            snapshot.forEach(childSnapshot => {
+                if (childSnapshot.exists()) {
+                    tmpTopTenStreaks.push(childSnapshot.val());
+                }
+            });
+
+            tmpTopTenStreaks.reverse();
+
+            setLeaderboard(tmpTopTenStreaks);
+        }).catch((error) => {
+            console.error(error);
+        });
+    }, []);
 
   return (
-    <div className="p-10 m-4 sm:px-6 lg:px-8 bg-white rounded-3xl mb-10">
+    <div className="p-10 m-4 sm:px-6 lg:px-8 bg-white rounded-3xl mb-10" id="leaderboard">
 
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
@@ -53,19 +60,21 @@ export default function Leaderboard() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {person.rank}
-                      </td>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {person.name}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
+                    {
+                      leaderboard.map((item: LeaderboardType, index: number) => (
+                        <tr key={item.key?.toString()}>
+                          <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                            {index + 1}
+                          </td>
+                          <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                            {item.userName}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.streak.toString()}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.score.toString()}</td>
 
-                    </tr>
-                  ))}
+                        </tr>
+                      ))
+                    }
                 </tbody>
               </table>
             </div>
