@@ -25,7 +25,7 @@ export default function PersonalBest() {
 
 
   return (
-    <div className="p-10 m-4 sm:px-6 lg:px-8 bg-white rounded-lg mb-10">
+    <div className="p-10 m-4 sm:px-6 lg:px-8 bg-white rounded-3xl mb-10">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Personal Best</h1>

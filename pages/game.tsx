@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import React from "react";
 
-import Navbar from "../app/dashboard/Navbar";
+import Menu from "../app/dashboard/Menu";
 import Leaderboard from "../types/leaderboard.type";
 import LeaderboardDataService from "../services/leaderboard.service";
+import Footer from '../app/dashboard/Footer';
 
 const words = ["ache",
 "acid",
@@ -1015,7 +1016,7 @@ function Game() {
   const [finalResult, setFinalResult] = useState("");
   const [randWord, setRandWord] = useState("");
   const [nextWord, setNextWord] = useState("");
-  const [t, setTimer] = useState(60);
+  const [t, setTimer] = useState(3);
   const [score, setScore] = useState(0);
   const [highStreak, setHighStreak] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -1032,8 +1033,8 @@ function Game() {
       // If the timer has reached 0, end the game
       if (t === 0) {
         setGameOver(true);
-        setCurrentResult(`Game over! The next word was ${nextWord}. `);
-        setFinalResult(`Streak of ${streak} words. ${score} total points.`);
+        setCurrentResult(`Game over!`);
+        setFinalResult(`The next word after ${randWord} was ${nextWord}. Streak of ${streak} words. ${score} total points.`);
       }
     }, 1000);
 
@@ -1196,11 +1197,11 @@ function Game() {
 
   return (
 
-    <div className="overflow-hidden h-screen">
+    <div className="h-screen bg-gray-100">
 
-      <Navbar/>
+      <Menu/>
 
-      <div className="overflow-hidden grid py-20 m-10 place-items-center overflow-y-hidden">
+      <div className="overflow-hidden grid py-20 m-10 place-items-center overflow-y-hidden bg-gray-200 rounded-3xl">
         {!gameOver ? (
           <>
             <div className="flex flex-col justify-center items-center overflow-y-hidden">
@@ -1209,33 +1210,34 @@ function Game() {
                 <p className="mx-5 text-5xl">{t}</p>
                 <p className="mx-5 text-5xl">{score}</p>
               </div>
-              <p className="bg-gray-800 p-5 rounded-lg text-2xl w-48 text-center mt-4">{randWord}</p>
+              <p className="bg-gray-400 p-5 rounded-lg text-2xl w-48 text-center mt-4">{randWord}</p>
             </div>
             <div className="flex mt-6">
               <form className="flex flex-col justify-center items-center" onSubmit={handleSubmit}>
                 <input
                   className="text-black w-48 bg-white p-2"
                   type="text"
+                  placeholder="Type guess here"
                   value={guess}
                   onChange={(e) => setGuess(e.target.value.toLowerCase())}
                   onKeyDown={checkForEnter}
                   ref={guessRef}
                 />
-                <button className="bg-gray-600 p-2 px-6 my-6 rounded-full flex items-center justify-center" type="submit">Guess</button>
+                <button className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-full m-10" type="submit">Guess</button>
               </form>
             </div>
             <p>{currentResult}</p>
-            <p className="font-black">Personal Best</p>
+            <p className="font-bold">Personal Best</p>
             <p>Streak: {highStreak}</p>
             <p>Score: {highScore} </p>
           </>
         ) : (
           <>
-            <div className="flex flex-col justify-center items-center overflow-y-hidden mt-20">
-              <p>{currentResult}</p>
-              <p className="">{finalResult}</p>
-              <button className="bg-gray-600 p-2 px-5 my-4 rounded-full" onClick={handlePlayAgain}>Play Again</button>
-              <button className="bg-gray-600 p-2 px-5 rounded-full">
+            <div className="flex flex-col justify-center items-center overflow-y-hidden">
+              <p className="text-2xl font-bold pb-4">{currentResult}</p>
+              <p className="text-center mx-20 mb-4">{finalResult}</p>
+              <button className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-full mt-6 mb-6" onClick={handlePlayAgain}>Play Again</button>
+              <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-full">
                 <Link href="/">Home</Link>
               </button>
             </div>
@@ -1255,11 +1257,7 @@ function Game() {
 
         )}
       </div>
-      <footer className="w-full h-16
-            fixed left-0 bottom-0
-            flex justify-center items-center
-            text-white">
-        </footer>
+      <Footer/>
     </div>
     
 

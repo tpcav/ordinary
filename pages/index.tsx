@@ -5,7 +5,6 @@ import Leaderboard from '../app/dashboard/Leader';
 
 import Menu from '../app/dashboard/Menu';
 import PersonalBest from '../app/dashboard/PersonalBest';
-import Modal from '../app/dashboard/modal';
 import Hero from '../app/dashboard/Hero';
 import Footer from '../app/dashboard/Footer';
 
@@ -28,16 +27,20 @@ export default function Example() {
 
       <Leaderboard/>
 
-      <footer className='w-full p-4 pb-8
+      <footer className='w-full
             fixed left-0 bottom-0
-            flex justify-center items-center bg-gray-200
+            flex justify-center items-center
             rounded-tl-3xl
             rounded-tr-3xl
             text-white
+            shadow-xl
             '>
-            <p className='p-2 bg-black rounded-full w-48 text-center'>
-              <Link href="/game">Play</Link>
-            </p>
+            <div className='rounded-tl-3xl rounded-tr-3xl flex justify-center items-center w-1/2 fixed'>
+              <p className='pb-20 backdrop-blur-sm bg-gray/80 border-2 border-blue-500 rounded-full w-48 h-48 text-center'>
+                <Link className="text-lg bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-full" href="/game">Play</Link>
+              </p>
+            </div>
+
       </footer>
 
       <Footer/>

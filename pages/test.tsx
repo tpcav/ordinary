@@ -5,7 +5,6 @@ import Leaderboard from '../app/dashboard/Leader';
 
 import Menu from '../app/dashboard/Menu';
 import PersonalBest from '../app/dashboard/PersonalBest';
-import Modal from '../app/dashboard/modal';
 import Hero from '../app/dashboard/Hero';
 import Footer from '../app/dashboard/Footer';
 
