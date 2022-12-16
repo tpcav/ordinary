@@ -1016,7 +1016,7 @@ function Game() {
   const [finalResult, setFinalResult] = useState("");
   const [randWord, setRandWord] = useState("");
   const [nextWord, setNextWord] = useState("");
-  const [t, setTimer] = useState(3);
+  const [t, setTimer] = useState(60);
   const [score, setScore] = useState(0);
   const [highStreak, setHighStreak] = useState(0);
   const [highScore, setHighScore] = useState(0);

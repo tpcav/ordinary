@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect } from "react";
 
 import Menu from '../app/dashboard/Menu';
+import Footer from '../app/dashboard/Footer';
 import LeaderboardDataService from "../services/leaderboard.service";
 import LeaderboardType from "../types/leaderboard.type";
 
@@ -26,7 +27,7 @@ export default function Leaderboard() {
     }, []);
 
   return (
-    <div className="overflow-hidden h-screen bg-gray-100">
+    <div className="h-screen bg-gray-100">
       <Head>
         <title>Leaderboard | Ordinary</title>
         <meta name="description" content="Word guessing game testing your ABCs."></meta>
@@ -51,10 +52,21 @@ export default function Leaderboard() {
 
         </div>
       </main>
-      <footer className="w-full p-4
+      <Footer/>
+      <footer className='w-full
             fixed left-0 bottom-0
             flex justify-center items-center
-            text-white">
+            rounded-tl-3xl
+            rounded-tr-3xl
+            text-white
+            shadow-xl
+            '>
+            <div className='rounded-tl-3xl rounded-tr-3xl flex justify-center items-center w-1/2 fixed'>
+              <p className='pb-20 backdrop-blur-sm bg-gray/80 border-2 border-blue-500 rounded-full w-48 h-48 text-center'>
+                <Link className="text-lg bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-full" href="/game">Play</Link>
+              </p>
+            </div>
+
       </footer>
     </div>
   )

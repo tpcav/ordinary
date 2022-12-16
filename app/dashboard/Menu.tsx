@@ -6,9 +6,9 @@ const solutions = [
   {name:'Home', description: '', href: '/'},
   { name: 'Play', description: 'Learn about tips, product updates and company culture.', href: '/game' },
   {
-    name: 'Tutorial',
+    name: 'Leaderboard',
     description: 'Get all of your questions answered in our forums of contact support.',
-    href: '#',
+    href: '/leaderboard',
   },
   { name: 'About', description: 'Learn how to maximize our platform to get the most out of it.', href: '#' },
 ]
