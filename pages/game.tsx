@@ -1200,7 +1200,7 @@ function Game() {
     <div className="h-screen bg-gray-100">
 
       <Menu/>
-
+      
       <div className="overflow-hidden grid py-20 m-10 place-items-center overflow-y-hidden bg-gray-200 rounded-3xl">
         {!gameOver ? (
           <>
