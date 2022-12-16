@@ -28,7 +28,7 @@ export default function Menu() {
               'p-2 group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900'
             )}
           >
-            <span className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-full'>Menu</span>
+            <span className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full'>Menu</span>
             <ChevronDownIcon
               className={classNames(open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500')}
               aria-hidden="true"
