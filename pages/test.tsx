@@ -27,20 +27,16 @@ export default function Example() {
 
       <Leaderboard/>
 
-      <footer className='w-full
+      <footer className='w-full p-4 pb-8
             fixed left-0 bottom-0
-            flex justify-center items-center
+            flex justify-center items-center bg-gray-200
             rounded-tl-3xl
             rounded-tr-3xl
             text-white
-            shadow-xl
             '>
-            <div className='rounded-tl-3xl rounded-tr-3xl flex justify-center items-center w-1/2 fixed'>
-              <p className='pb-20 backdrop-blur-sm bg-gray/80 border-2 border-green-600 rounded-full w-48 h-48 text-center'>
-                <Link className="text-lg bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-full" href="/game">Play</Link>
-              </p>
-            </div>
-
+            <p className='p-2 bg-black rounded-full w-48 text-center'>
+              <Link href="/game">Play</Link>
+            </p>
       </footer>
 
       <Footer/>
