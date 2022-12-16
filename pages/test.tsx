@@ -15,7 +15,7 @@ export default function Example() {
   return (
     <div className="bg-gray-100">
       <Head>
-        <title>Testing...</title>
+        <title>Ordinary. Word Guessing Game.</title>
         <meta name="description" content="Word guessing game that test your knowledge of the alphabet."></meta>
       
       </Head>
