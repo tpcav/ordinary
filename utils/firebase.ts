@@ -13,8 +13,7 @@ const firebaseConfig = {
   projectId: "ordinary-word",
   storageBucket: "ordinary-word.appspot.com",
   messagingSenderId: "618181567994",
-  appId: "1:618181567994:web:dc02b7c5de12db648f7043",
-  measurementId: "G-P0Y4R7RRP9"
+  appId: "1:618181567994:web:dc02b7c5de12db648f7043"
 };
 
 // Initialize Firebase
