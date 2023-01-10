@@ -2,7 +2,7 @@ import Draggable from 'react-draggable';
 import React from 'react'
 
 export default function Keyboard() {
-  const keyboard = ['ABCDEFG','HIJKLM','NOPQRS','TUVWXYZ']
+  const keyboard = ['ABCDEFG','HIJKLMN','OPQRSTU','VWXYZ']
 
   return (
     <div>

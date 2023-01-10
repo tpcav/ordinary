@@ -7,13 +7,13 @@ export default function test1() {
 
       <div className="">
         <div className='bg-white p-4'>
-          <h1 className="text-4xl font-black">ORDINARY
+          <h1 className="text-4xl font-black">ORDNARY
             <span className='text-lg font-semibold'>by Thomas Cavalcante</span>
           </h1> 
         </div>
       </div>
 
-      <div className="grid grid-cols m-auto p-24 justify-center bg-gradient-to-br from-red-200 via-red-300 to-orange-300">
+      <div className="grid grid-cols m-auto p-14 justify-center bg-gradient-to-br from-red-200 via-red-300 to-orange-300">
         <div className="flex justify-center justify-self-center mx-auto text-black text-center text-lg">
         <div className='flex items-center content-center text-center'>
             <div className="grid items-center content-center w-100">
