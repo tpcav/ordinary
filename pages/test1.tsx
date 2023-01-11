@@ -3,12 +3,12 @@ import Keyboard from '../app/dashboard/Keyboard'
 
 export default function test1() {
   return (
-    <div className='h-screen w-screen bg-gray-200 items-center text-center'>
+    <div className='h-screen w-screen bg-gray-100 items-center text-center'>
 
       <div className="">
         <div className='bg-white p-4'>
           <h1 className="text-4xl font-black">ORDNARY
-            <span className='text-lg font-semibold'>by Thomas Cavalcante</span>
+            <span className='text-lg font-semibold'>by Tom Cav</span>
           </h1> 
         </div>
       </div>
